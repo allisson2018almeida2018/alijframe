@@ -1,6 +1,7 @@
 package br.com.pontoEletronico.frames;
 
 import br.com.pontoEletronico.intefaces.AbstractJFrame;
+import br.com.pontoEletronico.listeners.Listener_Menu_Principal;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -9,10 +10,12 @@ import javax.swing.JButton;
 public final class Form_Menu_Principal extends AbstractJFrame {
 
     private static final long serialVersionUID = 2302738149495596051L;
+    private final Listener_Menu_Principal listener;
 
     public Form_Menu_Principal() {
         setImageIcon();
         initComponents();
+        listener = new Listener_Menu_Principal(this);
     }
 
     @Override

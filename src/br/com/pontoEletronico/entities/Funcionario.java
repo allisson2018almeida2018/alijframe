@@ -15,8 +15,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import org.eclipse.persistence.annotations.Index;
+import org.eclipse.persistence.annotations.Indexes;
 
 /**
  *
@@ -25,6 +29,16 @@ import javax.persistence.Table;
 @Entity
 @Access(AccessType.PROPERTY)
 @Table(name = "CAD_FUNCIONARIOS")
+@Indexes(value = {
+    @Index(name = "idx_nome", columnNames = {"nome"}),
+    @Index(name = "idx_cpf", columnNames = {"cpf"})
+})
+@NamedQueries(value = {
+    @NamedQuery(name = "funcionario.findAll", query = "SELECT f FROM Funcionario AS f"),
+    @NamedQuery(name = "funcionario.findByMatricula", query = "SELECT f FROM Funcionario AS f WHERE f.matricula = :paramMatricula"),
+    @NamedQuery(name = "funcionario.findByNome", query = "SELECT f FROM Funcionario AS f WHERE f.nome = :paramNome"),
+    @NamedQuery(name = "funcionario.findByCpf", query = "SELECT f FROM Funcionario AS f WHERE f.cpf = :paramCpf")
+})
 @SequenceGenerator(name = "func_seq", sequenceName = "seq_func", initialValue = 1, allocationSize = 1)
 public class Funcionario implements Serializable, Bean<Funcionario> {
 

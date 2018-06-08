@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 public class MessageFactory implements Serializable{
 
     private static final long serialVersionUID = 283352174362849008L;
-    public static final int FECHAR_FRAME = 0, FECHAR_SISTEMA = 1;
+    public static final int FECHAR_FRAME = 0, FECHAR_SISTEMA = 1, LOGIN = 2;
     
     public static boolean getSystemMsg(int msg, Component parent){
         switch(msg){
@@ -26,6 +26,18 @@ public class MessageFactory implements Serializable{
                 return JOptionPane.showConfirmDialog(parent, "Deseja realmente fechar o sistema?", "Fechar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == 0;
             default:
                 return false;
+        }
+    }
+    
+    public static void getOperationMsg(int msg, Component parent, boolean result){
+        switch(msg){
+            case LOGIN:
+                if (result) {
+                    JOptionPane.showMessageDialog(parent, "Login efetuado com sucesso", "Login", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(parent, "Erro ao tentar efetuar login", "Erro", JOptionPane.INFORMATION_MESSAGE);
+                }
+                break;
         }
     }
     
