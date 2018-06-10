@@ -56,9 +56,9 @@ public final class EntityManagerHelper<T> implements Serializable {
             this.closeSession(persistence_unit);
             return true;
         } catch (Exception e) {
-            session.getTransaction().begin();
             session.getTransaction().rollback();
             this.closeSession(persistence_unit);
+            e.printStackTrace();
             return false;
         }
     }
@@ -136,7 +136,7 @@ public final class EntityManagerHelper<T> implements Serializable {
         }
     }
 
-    public List<T> getObjectListNamedQuery(Class<T> classType, String namedQuery, String[] strParam, Object[] valor, String persistence_unit) {
+    public List<?> getObjectListNamedQuery(Class<?> classType, String namedQuery, String[] strParam, Object[] valor, String persistence_unit) {
         try {
             EntityManager session = this.getSession(persistence_unit);
             session.getTransaction().begin();
@@ -147,11 +147,12 @@ public final class EntityManagerHelper<T> implements Serializable {
                     query.setParameter(p, valor[cont++]);
                 }
             }
-            List<T> objects = query.getResultList();
+            List<?> objects = query.getResultList();
             this.closeSession(persistence_unit);
             return objects;
         } catch (Exception e) {
             this.closeSession(persistence_unit);
+            e.printStackTrace();
             return null;
         }
     }

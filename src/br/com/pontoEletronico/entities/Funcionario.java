@@ -8,6 +8,7 @@ package br.com.pontoEletronico.entities;
 import br.com.pontoEletronico.intefaces.Bean;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Objects;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;
@@ -39,7 +40,7 @@ import org.eclipse.persistence.annotations.Indexes;
     @NamedQuery(name = "funcionario.findByNome", query = "SELECT f FROM Funcionario AS f WHERE f.nome = :paramNome"),
     @NamedQuery(name = "funcionario.findByCpf", query = "SELECT f FROM Funcionario AS f WHERE f.cpf = :paramCpf")
 })
-@SequenceGenerator(name = "func_seq", sequenceName = "seq_func", initialValue = 1, allocationSize = 1)
+@SequenceGenerator(name = "func_seq", sequenceName = "func_seq", initialValue = 1, allocationSize = 1)
 public class Funcionario implements Serializable, Bean<Funcionario> {
 
     private static final long serialVersionUID = -7136837973113115416L;
@@ -136,6 +137,52 @@ public class Funcionario implements Serializable, Bean<Funcionario> {
         funcionario.setSalario(salario);
         funcionario.setSenha(senha);
         return funcionario;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + Objects.hashCode(this.matricula);
+        hash = 97 * hash + Objects.hashCode(this.nome);
+        hash = 97 * hash + Objects.hashCode(this.cpf);
+        hash = 97 * hash + Objects.hashCode(this.salario);
+        hash = 97 * hash + Objects.hashCode(this.senha);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Funcionario other = (Funcionario) obj;
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        if (!Objects.equals(this.cpf, other.cpf)) {
+            return false;
+        }
+        if (!Objects.equals(this.senha, other.senha)) {
+            return false;
+        }
+        if (!Objects.equals(this.matricula, other.matricula)) {
+            return false;
+        }
+        if (!Objects.equals(this.salario, other.salario)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Funcionario{" + "matricula=" + matricula + ", nome=" + nome + ", cpf=" + cpf + ", salario=" + salario + ", senha=" + senha + '}';
     }
 
 }

@@ -26,6 +26,8 @@ import javax.swing.JOptionPane;
  */
 public final class Listener_Validar_Ponto extends ListenerAbstractDefaultAdapter<Form_Validar_Ponto> {
 
+    private static final long serialVersionUID = 955209342845885525L;
+
     private final EntityManagerHelper emh = new EntityManagerHelper();
     private final FolhaPonto folhaPonto = new FolhaPonto();
     private final Ponto ponto = new Ponto();
@@ -62,12 +64,16 @@ public final class Listener_Validar_Ponto extends ListenerAbstractDefaultAdapter
 
     private void verificarPolhaPonto(Funcionario func) {
         if (func != null) {
-            Optional<List<?>> lista = Optional.ofNullable(emh.getObjectListNamedQuery(FolhaPonto.class, "folha.findByFuncionario", new String[]{"paramFuncionario"}, new Object[]{func.getMatricula()}, EntityManagerHelper.MYSQL_PU));
-            lista.ifPresent(lt -> lt.stream()
-                    .filter(folha -> ((FolhaPonto) folha).getMesReferencia().equals(LocalDate.now().format(DateTimeFormatter.ofPattern("MM/yyyy"))))
-                    .forEach(folha -> folhaPonto.copiar((FolhaPonto) folha)));
-            if (folhaPonto.getId() == null) {
-                folhaPonto.copiar(new FolhaPonto(LocalDate.now().format(DateTimeFormatter.ofPattern("MM/yyyy")), func, new ArrayList()));
+            Optional<List<?>> lista = Optional.ofNullable(emh.getObjectListNamedQuery(FolhaPonto.class, "folha.findByFuncionario", new String[]{"paramFuncionario"}, new Object[]{func}, EntityManagerHelper.MYSQL_PU));
+            if (lista.isPresent()) {
+                List<FolhaPonto> folhas = (List<FolhaPonto>) lista.get();
+                folhas.forEach((fp) -> {
+                    if (fp.getMesReferencia().equals(LocalDate.now().format(DateTimeFormatter.ofPattern("MM/yyyy")))) {
+                        folhaPonto.copiar(fp);
+                    } else {
+                        folhaPonto.copiar(new FolhaPonto(LocalDate.now().format(DateTimeFormatter.ofPattern("MM/yyyy")), func, new ArrayList()));
+                    }
+                });
             }
         }
     }

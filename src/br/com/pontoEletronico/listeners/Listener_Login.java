@@ -35,8 +35,8 @@ public final class Listener_Login extends ListenerAbstractDefaultAdapter<Form_Lo
     @Override
     protected void initComponents() {
         super.initComponents();
-        /*Usuario user = new Usuario(1l, "Administrador", "admin", "admin");
-        emh.getOperation(EntityManagerHelper.SALVAR, user, EntityManagerHelper.MYSQL_PU);*/
+        //Usuario user = new Usuario(1l, "Administrador", "admin", "admin");
+        //emh.getOperation(EntityManagerHelper.SALVAR, user, EntityManagerHelper.MYSQL_PU);
     }
 
     @Override

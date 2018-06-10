@@ -6,6 +6,7 @@
 package br.com.pontoEletronico.frames;
 
 import br.com.pontoEletronico.intefaces.AbstractJFrame;
+import br.com.pontoEletronico.listeners.Listener_Menu_Gestao;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -18,6 +19,7 @@ import javax.swing.JButton;
 public final class Form_Menu_Gestao extends AbstractJFrame {
 
     private static final long serialVersionUID = 4156382916689717568L;
+    private final Listener_Menu_Gestao listener;
 
     /**
      * Creates new form BatendoPonto
@@ -25,11 +27,12 @@ public final class Form_Menu_Gestao extends AbstractJFrame {
     public Form_Menu_Gestao() {
         setImageIcon();
         initComponents();
+        listener = new Listener_Menu_Gestao(this);
     }
 
     @Override
     public Optional<List<JButton>> getListButtons() {
-        return Optional.ofNullable(Arrays.asList(btExportarFolha, btSair, btVerFolha, btVerHoras, btVoltar));
+        return Optional.ofNullable(Arrays.asList(btExportarFolha, btSair, btVerFolha, btCadastrarFuncionario, btVerHoras, btVoltar));
     }
 
     /**
@@ -45,12 +48,14 @@ public final class Form_Menu_Gestao extends AbstractJFrame {
         btVerFolha = new javax.swing.JButton();
         btVerHoras = new javax.swing.JButton();
         btExportarFolha = new javax.swing.JButton();
+        btCadastrarFuncionario = new javax.swing.JButton();
         btVoltar = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Menu de Gestão");
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("MENU");
 
         btVerFolha.setText("1- Ver folha de ponto");
@@ -77,7 +82,15 @@ public final class Form_Menu_Gestao extends AbstractJFrame {
             }
         });
 
-        btVoltar.setText("4-Voltar");
+        btCadastrarFuncionario.setText("4- Cadastrar funcionário");
+        btCadastrarFuncionario.setActionCommand("cadastrarFunc");
+        btCadastrarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCadastrarFuncionarioActionPerformed(evt);
+            }
+        });
+
+        btVoltar.setText("5-Voltar");
         btVoltar.setActionCommand("voltar");
         btVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,7 +98,7 @@ public final class Form_Menu_Gestao extends AbstractJFrame {
             }
         });
 
-        btSair.setText("5-Sair");
+        btSair.setText("6-Sair");
         btSair.setActionCommand("fechar");
         btSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,33 +111,35 @@ public final class Form_Menu_Gestao extends AbstractJFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btVerFolha, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btExportarFolha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addComponent(btVerHoras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(220, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btVerFolha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btVerHoras, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btExportarFolha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                    .addComponent(btCadastrarFuncionario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btVoltar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btSair, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jLabel1)
-                .addGap(37, 37, 37)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btVerFolha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btVerHoras)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btExportarFolha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btCadastrarFuncionario)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btVoltar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btSair)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
@@ -150,6 +165,10 @@ public final class Form_Menu_Gestao extends AbstractJFrame {
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btSairActionPerformed
+
+    private void btCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarFuncionarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btCadastrarFuncionarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,6 +209,7 @@ public final class Form_Menu_Gestao extends AbstractJFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btCadastrarFuncionario;
     private javax.swing.JButton btExportarFolha;
     private javax.swing.JButton btSair;
     private javax.swing.JButton btVerFolha;

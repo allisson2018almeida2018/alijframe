@@ -21,7 +21,7 @@ public final class Calculos {
      * @param dia Caso informado calcula o dia que será calculado
      * @return String contendo as horas trabalhadas
      */
-    public String getHorasTrabalhadas(FolhaPonto folhaPonto, LocalDate dia) {
+    public static String getHorasTrabalhadas(FolhaPonto folhaPonto, LocalDate dia) {
         List<Ponto> lista = folhaPonto.getListaPonto();
         LocalTime hTrabalhada;
         int horas = 0;

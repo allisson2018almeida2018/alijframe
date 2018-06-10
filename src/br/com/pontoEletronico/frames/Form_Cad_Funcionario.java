@@ -6,10 +6,12 @@
 package br.com.pontoEletronico.frames;
 
 import br.com.pontoEletronico.intefaces.AbstractJFrame;
+import br.com.pontoEletronico.listeners.Listener_Cad_Funcionario;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import javax.swing.JButton;
+import javax.swing.JTextField;
 
 /**
  *
@@ -18,6 +20,7 @@ import javax.swing.JButton;
 public final class Form_Cad_Funcionario extends AbstractJFrame {
 
     private static final long serialVersionUID = -7209034009495746837L;
+    private final Listener_Cad_Funcionario listener;
 
     /**
      * Creates new form CadastroFunci
@@ -25,11 +28,40 @@ public final class Form_Cad_Funcionario extends AbstractJFrame {
     public Form_Cad_Funcionario() {
         setImageIcon();
         initComponents();
+        listener = new Listener_Cad_Funcionario(this);
     }
 
     @Override
     public Optional<List<JButton>> getListButtons() {
         return Optional.ofNullable(Arrays.asList(btSalvar, btFechar));
+    }
+
+    public boolean validarCampos() {
+        return txtCpf.getText() != null
+                && txtMatricula.getText() != null
+                && txtNome.getText() != null
+                && txtSalario.getText() != null
+                && txtSenha.getText() != null;
+    }
+
+    public JTextField getTxtCpf() {
+        return txtCpf;
+    }
+
+    public JTextField getTxtMatricula() {
+        return txtMatricula;
+    }
+
+    public JTextField getTxtNome() {
+        return txtNome;
+    }
+
+    public JTextField getTxtSalario() {
+        return txtSalario;
+    }
+
+    public JTextField getTxtSenha() {
+        return txtSenha;
     }
 
     /**
@@ -70,35 +102,7 @@ public final class Form_Cad_Funcionario extends AbstractJFrame {
 
         jLabel6.setText("SENHA:");
 
-        txtMatricula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMatriculaActionPerformed(evt);
-            }
-        });
-
-        txtNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeActionPerformed(evt);
-            }
-        });
-
-        txtCpf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCpfActionPerformed(evt);
-            }
-        });
-
-        txtSalario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSalarioActionPerformed(evt);
-            }
-        });
-
-        txtSenha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSenhaActionPerformed(evt);
-            }
-        });
+        txtMatricula.setEditable(false);
 
         btSalvar.setText("Salvar");
         btSalvar.setActionCommand("salvar");
@@ -171,27 +175,8 @@ public final class Form_Cad_Funcionario extends AbstractJFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeActionPerformed
-
-    private void txtMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatriculaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMatriculaActionPerformed
-
-    private void txtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCpfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCpfActionPerformed
-
-    private void txtSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSalarioActionPerformed
-
-    private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSenhaActionPerformed
 
     /**
      * @param args the command line arguments

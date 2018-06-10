@@ -19,12 +19,12 @@ public class LocalTimeConverter implements AttributeConverter<LocalTime, String>
 
     @Override
     public String convertToDatabaseColumn(LocalTime attribute) {
-        return attribute.format(DateTimeFormatter.ofPattern("hh:mm"));
+        return attribute.format(DateTimeFormatter.ofPattern("HH:mm"));
     }
 
     @Override
     public LocalTime convertToEntityAttribute(String dbData) {
-        return LocalTime.parse(dbData, DateTimeFormatter.ofPattern("hh:mm"));
+        return LocalTime.parse(dbData, DateTimeFormatter.ofPattern("HH:mm"));
     }
 
 }

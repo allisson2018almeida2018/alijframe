@@ -3,6 +3,7 @@ package br.com.pontoEletronico.entities;
 import br.com.pontoEletronico.intefaces.Bean;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
@@ -31,9 +32,10 @@ import org.eclipse.persistence.annotations.Indexes;
 @NamedQueries(value = {
     @NamedQuery(name = "folha.findAll", query = "SELECT fl FROM FolhaPonto AS fl"),
     @NamedQuery(name = "folha.findByMesRef", query = "SELECT fl FROM FolhaPonto AS fl WHERE fl.mesReferencia = :paramMes"),
-    @NamedQuery(name = "folha.findByFuncionario", query = "SELECT fl FROM FolhaPonto AS fl WHERE fl.funcionario.matricula = :paramFuncionario")
+    @NamedQuery(name = "folha.findByFuncionario", query = "SELECT fl FROM FolhaPonto AS fl WHERE fl.funcionario = :paramFuncionario"),
+    @NamedQuery(name = "folha.findByMesFunc", query = "SELECT fl FROM FolhaPonto AS fl WHERE fl.funcionario = :paramFuncionario AND fl.mesReferencia = :paramMes")
 })
-@SequenceGenerator(name = "folha_seq", sequenceName = "seq_folha", allocationSize = 1, initialValue = 1)
+@SequenceGenerator(name = "folha_seq", sequenceName = "folha_seq", allocationSize = 1, initialValue = 1)
 public class FolhaPonto implements Serializable, Bean<FolhaPonto> {
 
     private static final long serialVersionUID = -9105471585174539067L;
@@ -111,6 +113,48 @@ public class FolhaPonto implements Serializable, Bean<FolhaPonto> {
         FolhaPonto f = new FolhaPonto(mesReferencia, funcionario, listaPonto);
         f.setId(id);
         return f;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 59 * hash + Objects.hashCode(this.id);
+        hash = 59 * hash + Objects.hashCode(this.mesReferencia);
+        hash = 59 * hash + Objects.hashCode(this.funcionario);
+        hash = 59 * hash + Objects.hashCode(this.listaPonto);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final FolhaPonto other = (FolhaPonto) obj;
+        if (!Objects.equals(this.mesReferencia, other.mesReferencia)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.funcionario, other.funcionario)) {
+            return false;
+        }
+        if (!Objects.equals(this.listaPonto, other.listaPonto)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "FolhaPonto{" + "id=" + id + ", mesReferencia=" + mesReferencia + ", funcionario=" + funcionario + ", listaPonto=" + listaPonto + '}';
     }
 
 }

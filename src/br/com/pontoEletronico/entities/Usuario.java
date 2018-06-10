@@ -32,11 +32,10 @@ import org.eclipse.persistence.annotations.Indexes;
     @Index(name = "idx_login", columnNames = {"login"})
 })
 @NamedQueries(value = {
-    @NamedQuery(name = "usuario.findAll", query = "SELECT user FROM Usuario AS user")
-    ,
+    @NamedQuery(name = "usuario.findAll", query = "SELECT user FROM Usuario AS user"),
     @NamedQuery(name = "usuario.findByLogin", query = "SELECT user FROM Usuario AS user WHERE user.login = :paramLogin")
 })
-@SequenceGenerator(name = "user_seq", sequenceName = "seq_user", initialValue = 1, allocationSize = 1)
+@SequenceGenerator(name = "user_seq", sequenceName = "user_seq", initialValue = 1, allocationSize = 1)
 public class Usuario implements Serializable, Bean<Usuario> {
 
     private static final long serialVersionUID = 5907257879879194399L;

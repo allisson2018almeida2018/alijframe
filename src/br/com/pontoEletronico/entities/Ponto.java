@@ -28,19 +28,18 @@ import org.eclipse.persistence.annotations.Indexes;
 @Access(AccessType.PROPERTY)
 @Table(name = "MOV_PONTO")
 @Indexes(value = {
-    @Index(name = "idx_data", columnNames = {"dataPonto"})
-    ,
-    @Index(name = "idx_hora", columnNames = {"horario"})
+    @Index(name = "idx_data", columnNames = {"data_Ponto"}),
+    @Index(name = "idx_hora", columnNames = {"hora_ponto"})
 })
 @NamedQueries(value = {
-    @NamedQuery(name = "ponto.findAll", query = "SELECT pt FROM Ponto AS pt")
-    ,
-    @NamedQuery(name = "ponto.findFolha", query = "SELECT pt FROM Ponto AS pt WHERE pt.folha.id = :paramFolha")
-    ,
+    @NamedQuery(name = "ponto.findAll", query = "SELECT pt FROM Ponto AS pt"),
+    @NamedQuery(name = "ponto.findFolha", query = "SELECT pt FROM Ponto AS pt WHERE pt.folha.id = :paramFolha"),
     @NamedQuery(name = "ponto.findByFuncionario", query = "SELECT pt FROM Ponto AS pt WHERE pt.folha.funcionario.matricula = :paramFuncionario")
 })
-@SequenceGenerator(name = "ponto_seq", sequenceName = "seq_ponto", allocationSize = 1, initialValue = 1)
+@SequenceGenerator(name = "ponto_seq", sequenceName = "ponto_seq", allocationSize = 1, initialValue = 1)
 public class Ponto implements Serializable, Bean<Ponto> {
+
+    private static final long serialVersionUID = 1937595509242682191L;
 
     private Long id;
     private FolhaPonto folha;
