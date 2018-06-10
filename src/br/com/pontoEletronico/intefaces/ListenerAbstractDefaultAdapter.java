@@ -28,7 +28,7 @@ public abstract class ListenerAbstractDefaultAdapter<T> implements Serializable,
     }
     
     protected void attachListener(){
-        
+        ((AbstractJFrame) form).getListButtons().ifPresent(lista -> lista.forEach(bt -> bt.addActionListener(this)));
     }
 
     @Override

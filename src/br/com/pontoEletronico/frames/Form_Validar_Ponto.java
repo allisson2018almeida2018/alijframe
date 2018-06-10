@@ -6,10 +6,12 @@
 package br.com.pontoEletronico.frames;
 
 import br.com.pontoEletronico.intefaces.AbstractJFrame;
+import br.com.pontoEletronico.listeners.Listener_Validar_Ponto;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import javax.swing.JButton;
+import javax.swing.JTextField;
 
 /**
  *
@@ -18,18 +20,28 @@ import javax.swing.JButton;
 public final class Form_Validar_Ponto extends AbstractJFrame {
 
     private static final long serialVersionUID = 8526984087952470643L;
-
+    private final Listener_Validar_Ponto listener;
+    
     /**
      * Creates new form BaterPonto
      */
     public Form_Validar_Ponto() {
         setImageIcon();
         initComponents();
+        listener = new Listener_Validar_Ponto(this);
     }
 
     @Override
     public Optional<List<JButton>> getListButtons() {
         return Optional.ofNullable(Arrays.asList(btEntrar, btFechar));
+    }
+
+    public JTextField getTxtMatricula() {
+        return txtMatricula;
+    }
+
+    public JTextField getTxtSenha() {
+        return txtSenha;
     }
 
     /**
@@ -49,7 +61,8 @@ public final class Form_Validar_Ponto extends AbstractJFrame {
         btEntrar = new javax.swing.JButton();
         btFechar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Validar Ponto");
 
         txtMatricula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,8 +82,8 @@ public final class Form_Validar_Ponto extends AbstractJFrame {
 
         jLabel3.setText("Bater Ponto");
 
-        btEntrar.setText("ENTRAR");
-        btEntrar.setActionCommand("entrar");
+        btEntrar.setText("BATER PONTO");
+        btEntrar.setActionCommand("ponto");
         btEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btEntrarActionPerformed(evt);
@@ -132,6 +145,7 @@ public final class Form_Validar_Ponto extends AbstractJFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatriculaActionPerformed

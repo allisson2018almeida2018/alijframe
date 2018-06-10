@@ -12,6 +12,7 @@ import br.com.pontoEletronico.frames.Form_Menu_Principal;
 import br.com.pontoEletronico.intefaces.ListenerAbstractDefaultAdapter;
 import br.com.pontoEletronico.intefaces.LoginInterface;
 import br.com.pontoEletronico.util.ControleInstancias;
+import br.com.pontoEletronico.util.MessageFactory;
 import br.com.pontoEletronico.util.UserLogin;
 import java.awt.event.ActionEvent;
 
@@ -34,8 +35,8 @@ public final class Listener_Login extends ListenerAbstractDefaultAdapter<Form_Lo
     @Override
     protected void initComponents() {
         super.initComponents();
-        Usuario user = new Usuario(1l, "Administrador", "admin", "admin");
-        emh.getOperation(EntityManagerHelper.SALVAR, user, EntityManagerHelper.MYSQL_PU);
+        /*Usuario user = new Usuario(1l, "Administrador", "admin", "admin");
+        emh.getOperation(EntityManagerHelper.SALVAR, user, EntityManagerHelper.MYSQL_PU);*/
     }
 
     @Override
@@ -51,6 +52,8 @@ public final class Listener_Login extends ListenerAbstractDefaultAdapter<Form_Lo
                     Form_Menu_Principal principal = (Form_Menu_Principal) ControleInstancias.getInstance(Form_Menu_Principal.class.getName());
                     principal.setVisible(true);
                     form.dispose();
+                } else {
+                    MessageFactory.getOperationMsg(MessageFactory.LOGIN, form, false);
                 }
                 break;
             case "fechar":
