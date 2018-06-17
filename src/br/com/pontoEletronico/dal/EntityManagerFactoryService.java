@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.com.pontoEletronico.dal;
 
 import java.io.Serializable;
@@ -12,10 +8,7 @@ import java.util.logging.Logger;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-/**
- *
- * @author Tiago
- */
+
 public final class EntityManagerFactoryService implements Serializable{
 
     private static final long serialVersionUID = -6451288415731404127L;

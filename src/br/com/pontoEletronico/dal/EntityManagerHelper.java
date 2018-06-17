@@ -163,6 +163,7 @@ public final class EntityManagerHelper<T> implements Serializable {
             this.closeSession(persistence_unit);
             return object;
         } catch (Exception e) {
+            e.printStackTrace();
             this.closeSession(persistence_unit);
             return null;
         }

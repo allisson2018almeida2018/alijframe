@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.com.pontoEletronico.intefaces;
 
 import java.awt.event.ActionEvent;
@@ -10,8 +6,7 @@ import java.awt.event.ActionListener;
 import java.io.Serializable;
 
 /**
- *
- * @author Tiago
+
  * @param <T>
  */
 public abstract class ListenerAbstractDefaultAdapter<T> implements Serializable, ActionListener {

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.com.pontoEletronico.listeners;
 
 import br.com.pontoEletronico.dal.EntityManagerHelper;
@@ -16,10 +12,7 @@ import br.com.pontoEletronico.util.MessageFactory;
 import br.com.pontoEletronico.util.UserLogin;
 import java.awt.event.ActionEvent;
 
-/**
- *
- * @author Tiago
- */
+
 public final class Listener_Login extends ListenerAbstractDefaultAdapter<Form_Login> {
 
     private static final long serialVersionUID = -8990698351889987311L;

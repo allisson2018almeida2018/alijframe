@@ -1,18 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.com.pontoEletronico.tablemodels;
 
 import br.com.pontoEletronico.entities.Funcionario;
 import java.math.BigDecimal;
 import java.util.List;
 
-/**
- *
- * @author ALMEIDA
- */
+
 public final class TableModel_Pesquisa_Funcionario extends TableModelDefaultAdapter<Funcionario> {
 
     private static final long serialVersionUID = 255989609373962604L;

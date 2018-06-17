@@ -1,10 +1,6 @@
 package br.com.pontoEletronico.util;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.lang.reflect.Constructor;
@@ -12,10 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JFrame;
 
-/**
- *
- * @author Tiago D. Teixeira
- */
+
 public class ControleInstancias {
 
     private static final WindowCloseListener LISTENER = new WindowCloseListener();
