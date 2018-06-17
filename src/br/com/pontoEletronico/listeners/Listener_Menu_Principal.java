@@ -19,6 +19,8 @@ import javax.swing.JFrame;
  */
 public class Listener_Menu_Principal extends ListenerAbstractDefaultAdapter<Form_Menu_Principal> {
 
+    private static final long serialVersionUID = -2406298625979756040L;
+
     public Listener_Menu_Principal(Form_Menu_Principal form) {
         super(form);
         initComponents();
