@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.com.pontoEletronico.entities;
 
 import br.com.pontoEletronico.intefaces.Bean;
@@ -21,10 +17,7 @@ import javax.persistence.Table;
 import org.eclipse.persistence.annotations.Index;
 import org.eclipse.persistence.annotations.Indexes;
 
-/**
- *
- * @author Tiago
- */
+
 @Entity
 @Access(AccessType.PROPERTY)
 @Table(name = "CAD_USUARIOS")
