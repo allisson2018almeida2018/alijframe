@@ -25,7 +25,14 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+<<<<<<< HEAD
+/**
+ *
+ * @author Tiago
+ */
+=======
 
+>>>>>>> upstream/master
 public class Listener_Menu_Gestao extends ListenerAbstractDefaultAdapter<Form_Menu_Gestao> {
 
     private static final long serialVersionUID = -5503341429024563808L;

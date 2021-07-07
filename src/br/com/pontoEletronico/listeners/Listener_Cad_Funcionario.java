@@ -4,6 +4,17 @@ package br.com.pontoEletronico.listeners;
 import br.com.pontoEletronico.dal.EntityManagerHelper;
 import br.com.pontoEletronico.entities.Funcionario;
 import br.com.pontoEletronico.frames.Form_Cad_Funcionario;
+<<<<<<< HEAD
+import br.com.pontoEletronico.intefaces.ListenerAbstractDefaultAdapter;
+import br.com.pontoEletronico.util.MessageFactory;
+import java.awt.event.ActionEvent;
+import java.math.BigDecimal;
+
+/**
+ *
+ * @author Tiago
+ */
+=======
 import br.com.pontoEletronico.frames.Form_PesquisaDefault;
 import br.com.pontoEletronico.intefaces.ListenerAbstractDefaultAdapter;
 import br.com.pontoEletronico.tablemodels.TableModel_Pesquisa_Funcionario;
@@ -13,6 +24,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 
+>>>>>>> upstream/master
 public class Listener_Cad_Funcionario extends ListenerAbstractDefaultAdapter<Form_Cad_Funcionario> {
 
     private static final long serialVersionUID = 2385717988342261962L;
@@ -31,12 +43,15 @@ public class Listener_Cad_Funcionario extends ListenerAbstractDefaultAdapter<For
             case "salvar":
                 salvar();
                 break;
+<<<<<<< HEAD
+=======
             case "deletar":
                 deletar();
                 break;
             case "pesquisar":
                 pesquisar();
                 break;
+>>>>>>> upstream/master
         }
     }
 
@@ -53,6 +68,8 @@ public class Listener_Cad_Funcionario extends ListenerAbstractDefaultAdapter<For
         }
     }
 
+<<<<<<< HEAD
+=======
     private void deletar() {
         if (MessageFactory.getSystemMsg(MessageFactory.DELETAR, form)) {
             if (funcionario.getMatricula() != null) {
@@ -73,6 +90,7 @@ public class Listener_Cad_Funcionario extends ListenerAbstractDefaultAdapter<For
         pesquisa.setVisible(true);
     }
 
+>>>>>>> upstream/master
     private void setDados() {
         funcionario.setCpf(form.getTxtCpf().getText());
         funcionario.setMatricula(!form.getTxtMatricula().getText().equals("") ? Long.parseLong(form.getTxtMatricula().getText()) : null);
@@ -89,10 +107,13 @@ public class Listener_Cad_Funcionario extends ListenerAbstractDefaultAdapter<For
         form.getTxtSenha().setText(funcionario.getSenha());
     }
 
+<<<<<<< HEAD
+=======
     @Override
     public void setObject(Object object) {
         funcionario.copiar((Funcionario) object);
         getDados();
     }
 
+>>>>>>> upstream/master
 }

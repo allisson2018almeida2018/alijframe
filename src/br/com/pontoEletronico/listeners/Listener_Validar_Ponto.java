@@ -11,11 +11,21 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+<<<<<<< HEAD
+=======
 import java.util.Iterator;
+>>>>>>> upstream/master
 import java.util.List;
 import java.util.Optional;
 import javax.swing.JOptionPane;
 
+<<<<<<< HEAD
+/**
+ *
+ * @author Tiago
+ */
+=======
+>>>>>>> upstream/master
 public final class Listener_Validar_Ponto extends ListenerAbstractDefaultAdapter<Form_Validar_Ponto> {
 
     private static final long serialVersionUID = 955209342845885525L;
@@ -30,11 +40,14 @@ public final class Listener_Validar_Ponto extends ListenerAbstractDefaultAdapter
     }
 
     @Override
+<<<<<<< HEAD
+=======
     protected void initComponents() {
         super.initComponents();
     }
 
     @Override
+>>>>>>> upstream/master
     public void actionPerformed(ActionEvent e) {
         super.actionPerformed(e);
         switch (e.getActionCommand()) {
@@ -64,19 +77,27 @@ public final class Listener_Validar_Ponto extends ListenerAbstractDefaultAdapter
             Optional<List<?>> lista = Optional.ofNullable(emh.getObjectListNamedQuery(FolhaPonto.class, "folha.findByFuncionario", new String[]{"paramFuncionario"}, new Object[]{func}, EntityManagerHelper.MYSQL_PU));
             if (lista.isPresent()) {
                 List<FolhaPonto> folhas = (List<FolhaPonto>) lista.get();
+<<<<<<< HEAD
+                folhas.forEach((fp) -> {
+=======
                 Iterator<FolhaPonto> it_folhas = folhas.iterator();
                 while (it_folhas.hasNext()) {
                     FolhaPonto fp = it_folhas.next();
+>>>>>>> upstream/master
                     if (fp.getMesReferencia().equals(LocalDate.now().format(DateTimeFormatter.ofPattern("MM/yyyy")))) {
                         folhaPonto.copiar(fp);
                     } else {
                         folhaPonto.copiar(new FolhaPonto(LocalDate.now().format(DateTimeFormatter.ofPattern("MM/yyyy")), func, new ArrayList()));
                     }
+<<<<<<< HEAD
+                });
+=======
                 }
 
                 if (folhas.isEmpty()) {
                     folhaPonto.copiar(new FolhaPonto(LocalDate.now().format(DateTimeFormatter.ofPattern("MM/yyyy")), func, new ArrayList()));
                 }
+>>>>>>> upstream/master
             }
         }
     }

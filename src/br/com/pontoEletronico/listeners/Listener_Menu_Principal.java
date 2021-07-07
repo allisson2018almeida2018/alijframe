@@ -9,11 +9,20 @@ import br.com.pontoEletronico.util.ControleInstancias;
 import java.awt.event.ActionEvent;
 import javax.swing.JFrame;
 
+<<<<<<< HEAD
+/**
+ *
+ * @author Tiago
+ */
+public class Listener_Menu_Principal extends ListenerAbstractDefaultAdapter<Form_Menu_Principal> {
+
+=======
 
 public class Listener_Menu_Principal extends ListenerAbstractDefaultAdapter<Form_Menu_Principal> {
 
     private static final long serialVersionUID = -2406298625979756040L;
 
+>>>>>>> upstream/master
     public Listener_Menu_Principal(Form_Menu_Principal form) {
         super(form);
         initComponents();

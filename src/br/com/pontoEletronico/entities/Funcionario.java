@@ -18,7 +18,10 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import org.eclipse.persistence.annotations.Index;
 import org.eclipse.persistence.annotations.Indexes;
+<<<<<<< HEAD
+=======
 
+>>>>>>> upstream/master
 
 @Entity
 @Access(AccessType.PROPERTY)

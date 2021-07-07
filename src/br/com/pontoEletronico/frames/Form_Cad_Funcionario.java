@@ -8,7 +8,10 @@ import java.util.List;
 import java.util.Optional;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+<<<<<<< HEAD
+=======
 
+>>>>>>> upstream/master
 
 public final class Form_Cad_Funcionario extends AbstractJFrame {
 
@@ -43,6 +46,34 @@ public final class Form_Cad_Funcionario extends AbstractJFrame {
         txtNome.setText("");
         txtSalario.setText("");
         txtSenha.setText("");
+    }
+
+    public JTextField getTxtCpf() {
+        return txtCpf;
+    }
+
+    public JTextField getTxtMatricula() {
+        return txtMatricula;
+    }
+
+    public JTextField getTxtNome() {
+        return txtNome;
+    }
+
+    public JTextField getTxtSalario() {
+        return txtSalario;
+    }
+
+    public JTextField getTxtSenha() {
+        return txtSenha;
+    }
+
+    public boolean validarCampos() {
+        return txtCpf.getText() != null
+                && txtMatricula.getText() != null
+                && txtNome.getText() != null
+                && txtSalario.getText() != null
+                && txtSenha.getText() != null;
     }
 
     public JTextField getTxtCpf() {
